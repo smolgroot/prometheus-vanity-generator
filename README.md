@@ -1,54 +1,67 @@
-# React + TypeScript + Vite
+# Prometheus Vanity Ethereum Address Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prometheus is a tool for generating Ethereum wallet addresses with custom prefixes and/or suffixes. It allows users to create personalized Ethereum addresses while ensuring the security of private keys.
 
-Currently, two official plugins are available:
+[[LIVE DEMO]](https://prometheus-vanity.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Generate Ethereum addresses with custom prefixes and/or suffixes.
+- Supports case-sensitive and case-insensitive matching.
+- Displays the generated address, public key, and private key.
+- Includes a QR code for the private key for easy sharing or storage.
+- Dynamic difficulty indicator with a progress bar based on the complexity of the prefix and suffix.
+- Uses Web Workers for concurrency to prevent UI freezing during computation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/smolgroot/prometheus-vanity-eth.git
+   cd prometheus-vanity-eth
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Usage
+
+1. Open the application in your browser (usually at `http://localhost:3000`).
+2. Enter a custom prefix and/or suffix for the Ethereum address.
+3. Toggle the "Case Sensitive" option if needed.
+4. Click the "Generate ETH Wallet" button.
+5. View the generated address, public key, and private key.
+6. Use the QR code to easily share or store the private key.
+
+## Security
+
+- The private key is generated locally in your browser and is never sent to any server.
+- For more security, run Prometheus offline, on a client environment (fresh OS or Virtual Machine) by cloning this repository.
+- Always store your private key securely and never share it with anyone.
+
+## Technologies Used
+
+- **React**: For building the user interface.
+- **ethers.js**: For Ethereum wallet generation.
+- **qrcode.react**: For generating QR codes.
+- **Web Workers**: For running address generation in parallel threads to prevent UI freezing.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Inspired by the need for personalized Ethereum addresses.
+- Built with love for the Ethereum community.
+
+---
+
+**Disclaimer**: Use this tool at your own risk. Generating vanity addresses with long prefixes or suffixes may take significant time and computational resources.
