@@ -92,7 +92,7 @@ const AddressGenerator: React.FC = () => {
           }
           label="Case Sensitive"
         />
-        <Box>
+        <Stack direction={"row"}>
           <TextField
             label="Prefix"
             value={prefix}
@@ -107,7 +107,7 @@ const AddressGenerator: React.FC = () => {
             error={!isValidHex(suffix)}
             helperText={!isValidHex(suffix) ? 'Invalid hexadecimal character' : ''}
           />
-        </Box>
+        </Stack>
 
 
         {/* LinearProgress Widget */}

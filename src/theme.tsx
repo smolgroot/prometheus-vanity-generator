@@ -5,16 +5,16 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   cssVariables: true,
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-        main: '#ffcd00',
+        main: '#ff9900',
       },
       secondary: {
         main: '#FE6B8B',
       },
       background: {
-        default: '#202020',
-        paper: '#151515',
+        default: '#fff2d8',
+        paper: '#f5f5f5',
       },
   },
   typography: {
@@ -44,13 +44,13 @@ const theme = createTheme({
       fontFamily: 'Oxanium',
     },
     fontFamily: 'Roboto',
-    fontSize: 18,
+    fontSize: 15,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          background: 'linear-gradient(45deg, #FE6B8B 30%, #ffcd00 90%)',
+          background: 'linear-gradient(45deg, #FE6B8B 30%, #ff9900 90%)',
           border: 0,
           borderRadius: 3,
           boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

@@ -69,8 +69,6 @@ const AddressDisplay: React.FC<AddressDisplayProps> = ({ address, publicKey, pri
                   justifyContent: 'center',
                   alignItems: 'center',
                   mt: 2,
-                  bgcolor: "#fff",
-                  border: '5px solid #fff',
                 }}
               >
                 <QRCodeCanvas
