@@ -41,7 +41,7 @@ const App: React.FC = () => {
       <Typography variant='body2' textAlign='center' mb={5}>
         Configure your generation. More complex patterns are very long to compute, so be patient.
       </Typography>
-      <AddressGenerator address={''} publicKey={''} privateKey={''} />
+      <AddressGenerator />
       
     </Container>
   );

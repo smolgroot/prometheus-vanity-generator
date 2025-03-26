@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import AddressDisplay from './AddressDisplay';
 
+
 const AddressGenerator: React.FC = () => {
   const [prefix, setPrefix] = useState('');
   const [suffix, setSuffix] = useState('');
