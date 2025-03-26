@@ -10,11 +10,12 @@ const theme = createTheme({
         main: '#ffcd00',
       },
       secondary: {
-        main: '#f50057',
+        main: '#FE6B8B',
       },
-    background: {
-        default: '#353535',
-    },
+      background: {
+        default: '#202020',
+        paper: '#151515',
+      },
   },
   typography: {
     h1: {
@@ -43,13 +44,13 @@ const theme = createTheme({
       fontFamily: 'Oxanium',
     },
     fontFamily: 'Roboto',
-    fontSize: 22,
+    fontSize: 18,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+          background: 'linear-gradient(45deg, #FE6B8B 30%, #ffcd00 90%)',
           border: 0,
           borderRadius: 3,
           boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

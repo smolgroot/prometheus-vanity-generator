@@ -5,14 +5,14 @@
 <defs>
   <!-- Gradient for the flame -->
   <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#FF4500;stop-opacity:1">
-      <animate attributeName="stop-color" values="#FF4500;#FF6347;#FFD700;#FF4500" dur="3s" repeatCount="indefinite" />
+    <stop offset="0%" style="stop-color:#FE6B8B;stop-opacity:1">
+      <animate attributeName="stop-color" values="#FE6B8B;#FF6347;#FFD700;#FE6B8B" dur="3s" repeatCount="indefinite" />
     </stop>
     <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1">
-      <animate attributeName="stop-color" values="#FF6347;#FFD700;#FF4500;#FF6347" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="stop-color" values="#FF6347;#FFD700;#FE6B8B;#FF6347" dur="3s" repeatCount="indefinite" />
     </stop>
     <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1">
-      <animate attributeName="stop-color" values="#FFD700;#FF4500;#FF6347;#FFD700" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="stop-color" values="#FFD700;#FE6B8B;#FF6347;#FFD700" dur="3s" repeatCount="indefinite" />
     </stop>
   </linearGradient>
 </defs>

@@ -5,23 +5,35 @@ import AddressGenerator from './components/AddressGenerator';
 const App: React.FC = () => {
   return (
     <Container
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        // justifyContent: 'center',
-        height: '100vh',
-        pb: 5,
-        mb: 10
-      }}
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: "center",
+      height: 'auto',
+      minHeight: '90vh', // Ensures it takes the full viewport height
+      maxWidth: '900px', // Ensures it fits mobile screens
+      width: '650px', // Limits the width for larger screens
+      margin: '0 auto', // Centers horizontally
+      border: '2px solid #454545',
+      borderRadius: '10px', // Rounded corners
+      boxShadow: '5px 4px 10px rgba(0, 0, 0, 0.9)', // Adds a subtle shadow
+      padding: '20px', // Adds padding inside the card
+      marginTop: '40px',
+      marginBottom: '40px',
+      backgroundColor: 'background.paper', // Ensures proper theme support
+    }}
     >
       <Avatar
         alt="Promotheus"
         src="flame.svg"
         sx={{ width: 180, height: 180, mb: 2, mt:2 }}
       />
-      <Typography variant='h3' textAlign='center' color='primary'>
-        Prometheus
+      <Typography variant='h3' textAlign='center'>
+        <span style={{color:"#ffcd00"}}>Prom</span>
+        <span style={{color:"#FE6B8B", fontWeight:"bold"}}>eth</span>
+        <span style={{color:"#ffcd00"}}>eus</span>
       </Typography>
       <Typography variant='h6' textAlign='center'>
         Vanity Ethereum address generator
