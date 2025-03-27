@@ -41,10 +41,12 @@ const AddressGenerator: React.FC = () => {
   const totalChars = prefix.length + suffix.length;
   const getProgress = () => {
     if (totalChars == 0) return 0; // Easy
-    if (totalChars == 1) return 10; // Easy
-    if (totalChars <= 2) return 20; // Easy
-    if (totalChars <= 5) return 50; // Medium
-    if (totalChars <= 7) return 70; // Medium
+    if (totalChars == 1) return 5; // Easy
+    if (totalChars <= 2) return 10; // Easy
+    if (totalChars <= 3) return 20; // Medium
+    if (totalChars <= 4) return 35; // Medium
+    if (totalChars <= 7) return 55; // Medium
+    if (totalChars <= 8) return 75; // Hard
     return 90; // Hard
   };
 

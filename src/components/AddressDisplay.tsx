@@ -33,7 +33,7 @@ const AddressDisplay: React.FC<AddressDisplayProps> = ({ address, publicKey, pri
       <>
         {prefixIndex >= 0 && (
           <span style={{ color: '#FE6B8B', fontWeight: 'bolder', fontFamily: "Oxanium" }}>
-            {address.slice(0, prefix.length)}
+            {address.slice(0, prefix.length + 2)} 
           </span>
         )}
         <span style={{ fontFamily: "Oxanium" }}>
