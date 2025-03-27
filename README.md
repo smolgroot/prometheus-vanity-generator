@@ -1,6 +1,6 @@
-# Prometheus Vanity Ethereum Address Generator
+# Prometheus - EVM Vanity Address Generator
 
-Prometheus is a tool for generating Ethereum wallet addresses with custom prefixes and/or suffixes. It allows users to create personalized Ethereum addresses while ensuring the security of private keys.
+Prometheus is a tool for generating Ethereum (or other EVM compatible blockchains) wallet addresses with custom prefixes and/or suffixes. It allows users to create personalized Ethereum addresses while ensuring the security of private keys.
 
 [[LIVE DEMO]](https://prometheus-vanity.vercel.app)
 
