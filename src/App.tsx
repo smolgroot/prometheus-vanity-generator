@@ -56,7 +56,7 @@ const App: React.FC = () => {
       </IconButton>
 
       {/* Modal for FAQ */}
-      <Modal open={faqOpen} onClose={handleFaqClose}>
+            <Modal open={faqOpen} onClose={handleFaqClose}>
         <Box
           sx={{
             position: 'absolute',
@@ -65,10 +65,12 @@ const App: React.FC = () => {
             transform: 'translate(-50%, -50%)',
             width: '90%',
             maxWidth: '600px',
+            maxHeight: '80vh', // Limit the height to 80% of the viewport
             bgcolor: 'background.paper',
             boxShadow: 24,
             p: 4,
             borderRadius: 2,
+            overflowY: 'auto', // Enable vertical scrolling
           }}
         >
           <Typography variant="h5" gutterBottom>
@@ -85,6 +87,12 @@ const App: React.FC = () => {
           </Typography>
           <Typography variant="body2" gutterBottom>
             Yes, this tool is secure. All wallet generation happens locally in your browser. The private key is never sent to any server, ensuring your security and privacy.
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            Why do we use entropy for seed generation?
+          </Typography>
+          <Typography variant="body2" gutterBottom>
+            Entropy is used to ensure that the seed for generating Ethereum addresses is highly secure and unpredictable. By collecting entropy from your mouse movements, we add randomness to the seed, making it resistant to attacks and ensuring that the generated addresses are unique and secure.
           </Typography>
           <Typography variant="h6" gutterBottom>
             Why does generating a vanity address take so long?

@@ -6,7 +6,6 @@ import {
   FormControlLabel,
   Switch,
   Modal,
-  CircularProgress,
   Typography,
   Stack,
   Card,
@@ -15,7 +14,7 @@ import {
   Slider,
 } from '@mui/material';
 import AddressDisplay from './AddressDisplay';
-
+import MouseEntropyCollector from './MouseEntropyCollector';
 
 const AddressGenerator: React.FC = () => {
   const [prefix, setPrefix] = useState('');
@@ -26,15 +25,24 @@ const AddressGenerator: React.FC = () => {
   const [caseSensitive, setCaseSensitive] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [numWorkers, setNumWorkers] = useState(1); // Default to 1 worker
+  const [showEntropyCollector, setShowEntropyCollector] = useState(false); // Show entropy collector modal
+  const [, setEntropy] = useState<number[]>([]);
+  const [randomMessage, setRandomMessage] = useState(''); // State for random message
 
+  const messages = [
+    'Cooking thousands of wallets...',
+    'You have time for a coffee...',
+    'Searching for the perfect vanity address...',
+    'Crunching numbers for your wallet...',
+    'Almost there, hang tight...',
+  ];
 
   const isValidHex = (value: string) => /^[0-9a-fA-F]*$/.test(value);
 
   const workerOptions = [2, 4, 8, 16]; // Slider options
 
-  const handleSliderChange = (event: Event, value: number | number[]) => {
+  const handleSliderChange = (_event: Event, value: number | number[]) => {
     setNumWorkers(value as number);
-    console.log(event.cancelable)
   };
 
   // Calculate progress based on the total length of prefix and suffix
@@ -57,71 +65,69 @@ const AddressGenerator: React.FC = () => {
   };
 
   const calculateProbability = () => {
-    // const totalLength = prefix.length + suffix.length;
-  
-    // Split prefix and suffix into individual characters
     const combined = (prefix + suffix).split('');
-  
-    // Calculate the total probability based on each character
     const probability = combined.reduce((acc, char) => {
       if (/[0-9]/.test(char)) {
-        // Numeric characters are always case-insensitive
         return acc * 16;
       } else if (/[a-fA-F]/.test(char)) {
-        // Alphabetic characters depend on case sensitivity
         return acc * (caseSensitive ? 32 : 16);
       } else {
-        // Invalid characters should not occur, but return acc for safety
         return acc;
       }
-    }, 1); // Start with a base probability of 1
-  
+    }, 1);
     return probability;
   };
 
   const workersRef = useRef<Worker[]>([]);
 
-  const generateAddress = () => {
-    setIsGenerating(true);
-  
-    // Create an array to hold the workers
-    const workers: Worker[] = [];
+  const startEntropyCollection = () => {
+    // Reset entropy state and show the entropy collector
+    setEntropy([]);
+    setShowEntropyCollector(true);
+  };
 
+  const handleEntropyCollected = (collectedEntropy: number[]) => {
+    setEntropy(collectedEntropy);
+    setShowEntropyCollector(false); // Hide the entropy collector
+    generateAddress(collectedEntropy); // Proceed with address generation
+  };
+
+  const generateAddress = (collectedEntropy: number[]) => {
+    setIsGenerating(true);
+
+    // Pick a random message
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    setRandomMessage(messages[randomIndex]);
+
+    const workers: Worker[] = [];
     workersRef.current = workers;
-  
-    // Function to handle worker messages
+
     const handleWorkerMessage = (event: MessageEvent) => {
       const { address, publicKey, privateKey, error } = event.data;
-  
+
       if (error) {
         console.error(error);
         setIsGenerating(false);
         workers.forEach((w) => w.terminate());
         return;
       }
-  
-      // Update state with the generated wallet details
+
       setAddress(address);
       setPublicKey(publicKey);
       setPrivateKey(privateKey);
       setIsGenerating(false);
-  
-      // Terminate all workers
+
       workers.forEach((w) => w.terminate());
     };
-  
-    // Create the specified number of workers
+
     for (let i = 0; i < numWorkers; i++) {
       const worker = new Worker(new URL('./addressWorker.ts', import.meta.url), { type: 'module' });
       workers.push(worker);
-  
-      // Send data to the worker
-      worker.postMessage({ prefix, suffix, caseSensitive });
-  
-      // Listen for messages from the worker
+
+      worker.postMessage({ prefix, suffix, caseSensitive, entropy: collectedEntropy });
+
       worker.onmessage = (event) => handleWorkerMessage(event);
-  
-      // Handle errors for the worker
+
       worker.onerror = (error) => {
         console.error(`Worker ${i + 1} error:`, error);
         setIsGenerating(false);
@@ -133,16 +139,17 @@ const AddressGenerator: React.FC = () => {
   return (
     <Box>
       <Stack
-          direction="column" spacing={2} sx={{
-            marginBottom: 2,
-            p: 4,
-            textAlign: "left",
-            alignItems: "left", // Centers items horizontally
-            justifyContent: "left", // Centers items vertically
-          }}
-        >
-
-        <Stack direction={"row"}>
+        direction="column"
+        spacing={2}
+        sx={{
+          marginBottom: 2,
+          p: 4,
+          textAlign: 'left',
+          alignItems: 'left',
+          justifyContent: 'left',
+        }}
+      >
+        <Stack direction={'row'}>
           <TextField
             label="Prefix"
             value={prefix}
@@ -158,7 +165,7 @@ const AddressGenerator: React.FC = () => {
             helperText={!isValidHex(suffix) ? 'Invalid hexadecimal character' : ''}
           />
         </Stack>
-          
+
         <Card>
           <CardContent>
             <FormControlLabel
@@ -179,9 +186,8 @@ const AddressGenerator: React.FC = () => {
 
         <Card>
           <CardContent>
-            {/* Slider for selecting the number of workers */}
             <Typography variant="body2" gutterBottom>
-              Number of Workers: <span style={{fontWeight: "bolder"}}>{numWorkers}</span>
+              Number of Workers: <span style={{ fontWeight: 'bolder' }}>{numWorkers}</span>
             </Typography>
             <Typography variant="caption" gutterBottom>
               Please select a value based on your CPU's core count for optimal performance.
@@ -189,7 +195,6 @@ const AddressGenerator: React.FC = () => {
             <Slider
               value={numWorkers}
               onChange={handleSliderChange}
-              // step={null} // Disable intermediate steps
               marks={workerOptions.map((value) => ({ value, label: value.toString() }))}
               min={1}
               max={16}
@@ -198,7 +203,6 @@ const AddressGenerator: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* LinearProgress Widget */}
         <Box sx={{ mb: 5 }}>
           <Typography variant="body2" gutterBottom>
             Total Characters: {totalChars}
@@ -216,7 +220,8 @@ const AddressGenerator: React.FC = () => {
 
         <Button
           variant="contained"
-          onClick={generateAddress}
+          onClick={startEntropyCollection}
+          disabled={!isValidHex(prefix) || !isValidHex(suffix)} // Disable button if prefix or suffix is invalid
         >
           Generate ETH Wallet
         </Button>
@@ -230,13 +235,39 @@ const AddressGenerator: React.FC = () => {
                 address={address}
                 publicKey={publicKey}
                 privateKey={privateKey}
-                prefix={prefix} // Pass the prefix
-                suffix={suffix} // Pass the suffix
+                prefix={prefix}
+                suffix={suffix}
               />
             </CardContent>
           </Card>
         )}
       </Stack>
+
+      {/* Modal for entropy collection */}
+      <Modal
+        open={showEntropyCollector}
+        aria-labelledby="entropy-modal"
+        aria-describedby="entropy-description"
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            bgcolor: 'background.paper',
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2,
+          }}
+        >
+          <MouseEntropyCollector onEntropyCollected={handleEntropyCollected} />
+        </Box>
+      </Modal>
 
       {/* Modal for infinite loader */}
       <Modal
@@ -260,16 +291,21 @@ const AddressGenerator: React.FC = () => {
             borderRadius: 2,
           }}
         >
-          <CircularProgress />
-          <Typography variant='body1' align="center" mt={2}>
-            Cooking thousands of wallets...
+          <LinearProgress
+            variant="indeterminate"
+            sx={{
+              width: '100%',
+              mb: 2,
+            }}
+          />
+          <Typography variant="body1" align="center" mt={2}>
+            {randomMessage}
           </Typography>
           <Button
             variant="contained"
             color="error"
             sx={{ mt: 3 }}
             onClick={() => {
-              // Stop all workers and close the modal
               setIsGenerating(false);
               workersRef.current.forEach((worker) => worker.terminate());
             }}
