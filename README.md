@@ -12,6 +12,26 @@ Prometheus is a tool for generating Ethereum (or other EVM compatible blockchain
 - Includes a QR code for the private key for easy sharing or storage.
 - Dynamic difficulty indicator with a progress bar based on the complexity of the prefix and suffix.
 - Uses Web Workers for concurrency to prevent UI freezing during computation.
+- Entropy-based randomness: Uses mouse movement to generate entropy for secure and unpredictable seed generation.
+
+## Entropy-Based Randomness
+
+To ensure the highest level of security and randomness, Prometheus introduces **entropy generation**. This feature collects entropy from user mouse movements to create a highly secure and unpredictable seed for wallet generation. 
+
+### Why Use Entropy?
+
+- **Enhanced Security**: Random seeds derived from entropy ensure that the generated private keys are resistant to attacks.
+- **Unpredictability**: By using user-generated entropy, the randomness is unique to each session.
+- **Client-Side Only**: All entropy collection and seed generation happen locally in your browser, ensuring privacy and security.
+
+## UI Screenshots
+
+| Feature                          | Screenshot                                                 |
+|----------------------------------|------------------------------------------------------------|
+| **Customization**                | ![Home Screen](./public/misc/customization.png)                     |
+| **Entropy Collection Modal**     | ![Entropy Modal](./public/misc/entropy.png)          |
+| **Generated Wallet Details**     | ![Generated Wallet](./public/misc/result.png)    |
+
 
 ## Installation
 
@@ -31,18 +51,10 @@ Prometheus is a tool for generating Ethereum (or other EVM compatible blockchain
    npm start
    ```
 
-## Usage
-
-1. Open the application in your browser (usually at `http://localhost:3000`).
-2. Enter a custom prefix and/or suffix for the Ethereum address.
-3. Toggle the "Case Sensitive" option if needed.
-4. Click the "Generate ETH Wallet" button.
-5. View the generated address, public key, and private key.
-6. Use the QR code to easily share or store the private key.
-
 ## Security
 
 - The private key is generated locally in your browser and is never sent to any server.
+- Entropy-based randomness ensures secure and unpredictable seed generation.
 - For more security, run Prometheus offline, on a client environment (fresh OS or Virtual Machine) by cloning this repository.
 - Always store your private key securely and never share it with anyone.
 
