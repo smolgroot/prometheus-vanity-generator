@@ -25,12 +25,11 @@ To ensure the highest level of security and randomness, Prometheus introduces **
 - **Client-Side Only**: All entropy collection and seed generation happen locally in your browser, ensuring privacy and security.
 
 ## UI Screenshots
-
 | Feature                          | Screenshot                                                 |
 |----------------------------------|------------------------------------------------------------|
-| **Customization**                | ![Home Screen](./public/misc/customization.png)                     |
-| **Entropy Collection Modal**     | ![Entropy Modal](./public/misc/entropy.png)          |
-| **Generated Wallet Details**     | ![Generated Wallet](./public/misc/result.png)    |
+| **Customization**                | <img src="./public/misc/customization.png" alt="Home Screen" width="300px" /> |
+| **Entropy Collection Modal**     | <img src="./public/misc/entropy.png" alt="Entropy Modal" width="300px" /> |
+| **Generated Wallet Details**     | <img src="./public/misc/result.png" alt="Generated Wallet" width="300px" /> |
 
 
 ## Installation
