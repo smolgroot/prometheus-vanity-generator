@@ -55,7 +55,7 @@ const MouseEntropyCollector: React.FC<MouseEntropyCollectorProps> = ({ onEntropy
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '300px',
+        height: '500px',
         border: '2px dashed #FE6B8B',
         borderRadius: '8px',
         textAlign: 'center',
@@ -65,6 +65,9 @@ const MouseEntropyCollector: React.FC<MouseEntropyCollectorProps> = ({ onEntropy
     >
       <Typography variant="h6" gutterBottom>
         Move your mouse around to generate entropy
+      </Typography>
+      <Typography variant="body2" gutterBottom>
+        Entropy ensures that the random seeds used for address generation are highly secure and unpredictable. This ensures generated addresses uniqueness.
       </Typography>
       <Typography variant="body2" gutterBottom>
         Entropy collected: {entropyPoints.length} / {requiredPoints}

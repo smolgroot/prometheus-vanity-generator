@@ -94,40 +94,43 @@ const AddressGenerator: React.FC = () => {
 
   const generateAddress = (collectedEntropy: number[]) => {
     setIsGenerating(true);
-
+  
     // Pick a random message
     const randomIndex = Math.floor(Math.random() * messages.length);
     setRandomMessage(messages[randomIndex]);
-
+  
     const workers: Worker[] = [];
     workersRef.current = workers;
-
+  
     const handleWorkerMessage = (event: MessageEvent) => {
       const { address, publicKey, privateKey, error } = event.data;
-
+  
       if (error) {
         console.error(error);
         setIsGenerating(false);
         workers.forEach((w) => w.terminate());
         return;
       }
-
+  
       setAddress(address);
       setPublicKey(publicKey);
       setPrivateKey(privateKey);
       setIsGenerating(false);
-
+  
       workers.forEach((w) => w.terminate());
     };
-
+  
     for (let i = 0; i < numWorkers; i++) {
+      // Add a delta to the entropy for each worker
+      const workerEntropy = [...collectedEntropy, i]; // Append the worker index to the entropy array
+  
       const worker = new Worker(new URL('./addressWorker.ts', import.meta.url), { type: 'module' });
       workers.push(worker);
-
-      worker.postMessage({ prefix, suffix, caseSensitive, entropy: collectedEntropy });
-
+  
+      worker.postMessage({ prefix, suffix, caseSensitive, entropy: workerEntropy });
+  
       worker.onmessage = (event) => handleWorkerMessage(event);
-
+  
       worker.onerror = (error) => {
         console.error(`Worker ${i + 1} error:`, error);
         setIsGenerating(false);
@@ -263,6 +266,9 @@ const AddressGenerator: React.FC = () => {
             boxShadow: 24,
             p: 4,
             borderRadius: 2,
+            minHeight: "60%",
+            width: '80%', // Increase the width to 80% of the viewport
+            maxWidth: '800px', // Set a maximum width for larger screens
           }}
         >
           <MouseEntropyCollector onEntropyCollected={handleEntropyCollected} />

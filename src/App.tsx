@@ -56,7 +56,7 @@ const App: React.FC = () => {
       </IconButton>
 
       {/* Modal for FAQ */}
-            <Modal open={faqOpen} onClose={handleFaqClose}>
+      <Modal open={faqOpen} onClose={handleFaqClose}>
         <Box
           sx={{
             position: 'absolute',
