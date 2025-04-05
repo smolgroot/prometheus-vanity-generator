@@ -13,7 +13,7 @@
 <p align="center">
 
    ![Ethers](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)
-   ![Ethers](https://img.shields.io/badge/Ethers_JS-2535a0?style=for-the-badge&logo=&logoColor=white)
+   ![Ethers](https://img.shields.io/badge/Ethers_JS-2535a0?style=for-the-badge&logo=Ethers&logoColor=white)
    ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
    ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
    ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
