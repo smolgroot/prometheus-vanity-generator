@@ -1,8 +1,31 @@
-# Prometheus - EVM Vanity Address Generator
+<p align="center">
+   <img src="public/flame.svg" width="120px" alt="skypier logo" />
+</p>
 
-Prometheus is a tool for generating Ethereum (or other EVM compatible blockchains) wallet addresses with custom prefixes and/or suffixes. It allows users to create personalized Ethereum addresses while ensuring the security of private keys.
+<h3 align="center">
+   Prometheus |  EVM Vanity Address Generator
+</h3>
+<p align="center">
+   Prometheus is a tool for generating Ethereum (or other EVM compatible blockchains) wallet addresses with custom prefixes and/or suffixes. It allows users to create personalized Ethereum addresses while ensuring the security of private keys
+</p>
+<br />
 
-[[LIVE DEMO]](https://prometheus-vanity.vercel.app)
+<p align="center">
+
+   ![Ethers](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)
+   ![Ethers](https://img.shields.io/badge/Ethers_JS-2535a0?style=for-the-badge&logo=&logoColor=white)
+   ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+   ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+   ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+   ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+</p>
+
+<hr>
+
+Generate your vanity address on our online version
+
+[![LIVE DEMO](https://img.shields.io/badge/LIVE_DEMO-F88900?style=for-the-badge&logo=Vercel&logoColor=white)](https://prometheus-vanity.vercel.app)
+
 
 ## Features
 
