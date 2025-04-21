@@ -28,7 +28,7 @@
     "@types/seedrandom": "^3.0.8",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.24.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^6.0.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "typescript": "~5.8.3",
