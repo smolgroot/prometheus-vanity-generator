@@ -40,7 +40,7 @@ importers:
         version: 3.0.5
     devDependencies:
       '@eslint/js':
-        specifier: ^9.24.0
+        specifier: ^9.25.1
         version: 9.25.1
       '@types/react':
         specifier: ^19.1.2
@@ -55,7 +55,7 @@ importers:
         specifier: ^4.3.4
         version: 4.4.1(vite@6.3.2(@types/node@22.7.5))
       eslint:
-        specifier: ^9.24.0
+        specifier: ^9.25.1
         version: 9.25.1
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
@@ -371,12 +371,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@eslint-community/eslint-utils@4.5.1':
-    resolution: {integrity: sha512-soEIOALTfTK6EjmKMMoLugwaP0rzkad90iIWd1hMO9ARkSAyjfMfkRRhLvD5qH7vvM0Cg72pieUfR6yh6XxC4w==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
 
   '@eslint-community/eslint-utils@4.6.1':
     resolution: {integrity: sha512-KTsJMmobmbrFLe3LDh0PC2FXpcSYJt/MLjlkh/9LEnmKYLSYmT/0EW9JWANjeoemiuZrmogti0tW5Ch+qNUYDw==}
@@ -1718,11 +1712,6 @@ snapshots:
   '@esbuild/win32-x64@0.25.2':
     optional: true
 
-  '@eslint-community/eslint-utils@4.5.1(eslint@9.25.1)':
-    dependencies:
-      eslint: 9.25.1
-      eslint-visitor-keys: 3.4.3
-
   '@eslint-community/eslint-utils@4.6.1(eslint@9.25.1)':
     dependencies:
       eslint: 9.25.1
@@ -2255,7 +2244,7 @@ snapshots:
 
   eslint@9.25.1:
     dependencies:
-      '@eslint-community/eslint-utils': 4.5.1(eslint@9.25.1)
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.25.1)
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.20.0
       '@eslint/config-helpers': 0.2.1
