@@ -21,8 +21,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.2(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       ethers:
-        specifier: ^6.13.5
-        version: 6.13.5
+        specifier: ^6.13.7
+        version: 6.13.7
       js-sha256:
         specifier: ^0.11.0
         version: 0.11.0
@@ -40,7 +40,7 @@ importers:
         version: 3.0.5
     devDependencies:
       '@eslint/js':
-        specifier: ^9.25.1
+        specifier: ^9.24.0
         version: 9.25.1
       '@types/react':
         specifier: ^19.1.0
@@ -52,16 +52,16 @@ importers:
         specifier: ^3.0.8
         version: 3.0.8
       '@vitejs/plugin-react':
-        specifier: ^4.4.1
-        version: 4.4.1(vite@6.3.2(@types/node@22.7.5))
+        specifier: ^4.3.4
+        version: 4.4.1(vite@6.3.3(@types/node@22.7.5))
       eslint:
-        specifier: ^9.25.1
+        specifier: ^9.24.0
         version: 9.25.1
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.25.1)
       eslint-plugin-react-refresh:
-        specifier: ^0.4.20
+        specifier: ^0.4.19
         version: 0.4.20(eslint@9.25.1)
       globals:
         specifier: ^16.0.0
@@ -74,7 +74,7 @@ importers:
         version: 8.31.0(eslint@9.25.1)(typescript@5.8.3)
       vite:
         specifier: ^6.2.5
-        version: 6.3.2(@types/node@22.7.5)
+        version: 6.3.3(@types/node@22.7.5)
 
 packages:
 
@@ -931,8 +931,8 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
-  ethers@6.13.5:
-    resolution: {integrity: sha512-+knKNieu5EKRThQJWwqaJ10a6HE9sSehGeqWN65//wE7j47ZpFhKAnHB/JJFibwwg61I/koxaPsXbXpD/skNOQ==}
+  ethers@6.13.7:
+    resolution: {integrity: sha512-qbaJ0uIrjh+huP1Lad2f2QtzW5dcqSVjIzVH6yWB4dKoMuj2WqYz5aMeeQTCNpAKgTJBM5J9vcc2cYJ23UAimQ==}
     engines: {node: '>=14.0.0'}
 
   fast-deep-equal@3.1.3:
@@ -1359,8 +1359,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  vite@6.3.2:
-    resolution: {integrity: sha512-ZSvGOXKGceizRQIZSz7TGJ0pS3QLlVY/9hwxVh17W3re67je1RKYzFHivZ/t0tubU78Vkyb9WnHPENSBCzbckg==}
+  vite@6.3.3:
+    resolution: {integrity: sha512-5nXH+QsELbFKhsEfWLkHrvgRpTdGJzqOZ+utSdmPTvwHmvU6ITTm3xx+mRusihkcI8GeC7lCDyn3kDtiki9scw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -2077,14 +2077,14 @@ snapshots:
       '@typescript-eslint/types': 8.31.0
       eslint-visitor-keys: 4.2.0
 
-  '@vitejs/plugin-react@4.4.1(vite@6.3.2(@types/node@22.7.5))':
+  '@vitejs/plugin-react@4.4.1(vite@6.3.3(@types/node@22.7.5))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.10)
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.3.2(@types/node@22.7.5)
+      vite: 6.3.3(@types/node@22.7.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -2300,7 +2300,7 @@ snapshots:
 
   esutils@2.0.3: {}
 
-  ethers@6.13.5:
+  ethers@6.13.7:
     dependencies:
       '@adraffy/ens-normalize': 1.10.1
       '@noble/curves': 1.2.0
@@ -2684,7 +2684,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  vite@6.3.2(@types/node@22.7.5):
+  vite@6.3.3(@types/node@22.7.5):
     dependencies:
       esbuild: 0.25.2
       fdir: 6.4.4(picomatch@4.0.2)
